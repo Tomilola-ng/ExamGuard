@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main id="user--page" class="container mxw-400 m-auto lg_ml-0">
+    <article class="m-auto p-2 mbt-2">
+        <form method='POST'>
+            {% csrf_token %}
+            {% if msg %}
+                <button class="bg-red bdrs f-white fs-7 w-90 p-2"> {{ msg }} </button>
+            {% endif %}
+            <a class="bold"> Sign-up </a>
+            <br>
+            {{ form.as_p }}
+            <div class="dp-flex ai-c w-95 jc-sb lg_w-90">
+                <button type="submit" class="bg-col bdrs-pill f-white as-fs plr-2"> Sign-up </button>
+                <span class='fs-7 mr-3'>
+                    Have an account, <a href="{% url 'login' %}" class="f-col"> Sign-in </a>
+                </span>
+            </div>
+        </form>
+    </article>
+</main>
+{% endblock content %}
+

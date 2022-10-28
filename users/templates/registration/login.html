@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main id="user--page" class="container mxw-400 lg_mxw-450 m-auto lg_ml-0">
+    <article class="m-auto p-2 mbt-2">
+        <form method='POST' class="p-1">
+            {% csrf_token %}
+            <a class="bold"> Sign-in </a>
+            <br>
+            {{ form.as_p }}
+            <div class="dp-flex ai-c w-95 jc-sb lg_w-90">
+                <button type="submit" class="bg-col bdrs-pill f-white as-fs plr-2"> Log-in </button>
+                <span class="fs-7 w-75 row">
+                    <span>
+                        No account, <a href="{% url 'register' %}" class="f-col"> Sign-Up </a>
+                    </span>
+                </span>
+            </div>
+        </form>
+    </article>
+</main>
+{% endblock content %}
+

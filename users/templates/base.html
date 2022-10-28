@@ -1,0 +1,117 @@
+{% load blog_tags %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'post/style.css' %}" />                
+    <title> ExamGuard {% block title %} {% endblock title %} </title>
+                
+    <style>
+      .post-content {
+        font-size: 95%;
+      }
+      span.helptext , #photo-clear_id {
+          display: none;
+      }
+      label {
+        font-size: 90%;
+      }
+      .like-svg {
+        width: 30px; height: 30px;
+      }
+      .like-svg svg {
+        transform: scale(0.8);
+      }
+      form ul li {
+        font-size: 70%;
+        width: 80%;
+        color: rgb(5, 83, 5);
+      }
+      form ul.errorlist li {
+        color: var(--red);
+      }
+      .comment_form textarea {
+        height: 100px;
+      }
+      .profile-img {
+        width: 100px; height: 100px;
+      }
+      .o-hide {
+        overflow: hidden;
+      }
+      .fs-8 {
+        font-size: 0.7rem !important;
+      }
+      .h-20vh {
+        height:20vh;
+      }
+    </style>
+
+</head>
+
+<body>
+
+  <main id="app">
+    <header class="w-100 bg-col">
+        <section class="container dp-flex ai-c jc-sb p-2 mxw-450 lg_mxw-900 m-auto">
+        <a  class="w-30 fs-5 f-white anim--right-in"> ExamGuard </a>
+        <div class="lg_w-20 pbt-2"></div>
+        <nav 
+        class="w-60 h-100 mxw-250 lg_w-50 dp-flex jc-sa ai-c">
+            <a href="{% url 'post_list' %}" class="fs-7 f-white"> Posts </a>
+            <a href="{% url 'question_list' %}" class="fs-7 f-white">Ask ?</a>
+            <div class="fs-7 p-2 pbt-1 bg-white bdrs-pill">
+              {% if user.is_authenticated %}
+              <a href="{% url 'dashboard' %}" class="f-col w-100 h-100"> Profile </a>
+              {% else %}
+              <a href="{% url 'register' %}" class="f-col"> Signup </a>
+              {% endif %}
+            </div>
+        </nav>
+        </section>
+    </header>
+
+    <article id="html--container" class="container p-2 plr-3 mxw-900 m-auto dp-flex flex-wrap pos-relative">
+      {% block content %} {% endblock %}
+      
+      <aside id="side bar" 
+      class="container mxw-400 m-auto mt-3 p-2 pbt-3">
+      <span class="bold">
+        Search for topics with tags 
+      </span>
+      <div class="w-100 p-2 pl-0 mt-1">
+      {% get_tags as tee_tag %}
+         {% for t in tee_tag %}
+          <a href="{% url 'post_list_by_tag' t.slug %}" class="fs-7 mr-1 bg-black f-white bdrs p-1">
+             #{{ t }} 
+            </a> 
+       {% endfor %} 
+        
+      </div>
+      <br>
+      <p>
+         Hi 🖐, Studious student we are Exam Guardians and We will like you to know we've written <b> {% total_posts %} </b> Posts to prepare you for your nearest exams  
+        Check them out noww, for your own good
+      </p>
+
+      <span class="bold"> Latest Posts !! </span>
+       {% show_latest_posts 3 %} 
+
+      <span class="bold"> Most answered Question !! </span>
+       {% get_most_commented_posts as most_commented_posts %}
+        <div class="col container bdrs mbt-2">
+        {% for post in most_commented_posts %}
+          <a href="{{ post.get_absolute_url }}" class="fs-7 as-fs mb-1"> _{{ post.question| safe |truncatewords:15 }} <span class="bg-col bdrs-pill f-white plr-2 ml-2"> Read_Now </span></a>
+      {% endfor %} 
+      </aside>
+    </article>
+
+</main>
+
+</body>
+</html>

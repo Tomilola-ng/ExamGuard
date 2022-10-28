@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main id="user--page" class="container mxw-400 lg_mxw-450 m-auto lg_ml-0">
+    <article class="m-auto p-2 mbt-2">
+        <a href="{% url 'question_create' %}" class="fs-7 bg-col bdrs f-white col p-1 mb-4">
+            Ask a Question 
+        </a>
+        {% for object in objects %}
+        <div class="row mbt-1">
+            <div class="pb-2 w-70 dp-flex ai-c">
+              {{ object.question }}
+            </div>
+            <small class="w-30 pl-3 fs-7"
+            style="border-left: 0.25em solid var(--col)"
+            >
+              {{ object.asker }} on {{ object.date | date:'M d o' }}
+            </small>
+        </div>
+        <a href="{% url 'question_detail' object.id %}" class="fs-7 bg-green bdrs-pill f-white p-1 plr-2 mb-4">
+            Answer
+        </a>
+        <small class="ml-5 pl-5 fs-7">
+        {% with object.answer.count as total_comments %} 
+                  {{ total_comments }}  
+                    Answer{{ total_comments|pluralize }} 
+        {% endwith %} 
+        </small>
+        <br><br>
+        {% endfor %}
+
+        <div>
+          <a 
+          {% if page_obj.has_previous %}
+          href="?page={{ page_obj.previous_page_number }}"
+          class="bg-col f-white bdrs p-1 fs-7 mr-2"
+          {% else %}
+          class="bg-black f-gray bdrs p-1 fs-7 mr-2"
+          {% endif %}
+          > &laquo; Back </a>
+  
+          <a 
+          {% if page_obj.has_next %}
+          href="?page={{ page_obj.next_page_number }}"
+          class="bg-col f-white bdrs p-1 fs-7 mr-2"
+          {% else %}
+          class="bg-black f-gray bdrs p-1 fs-7 mr-2"
+          {% endif %}
+          > Next &raquo; </a>
+    </div>
+  
+    </article>
+</main>
+{% endblock content %}
+

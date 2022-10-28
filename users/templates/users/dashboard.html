@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main id="user--page" class="container dp-flex flex-wrap mxw-400 w-90 m-auto lg_m-0">
+    <article class="lg_bx-sh container bdrs-10 p-2 lg_pl-3 pb-3 mb-2 col">
+
+      <div class="w-100 pb-1">
+        <div class="col">
+          <a class="as-fs fs-5">
+            {{ user.username }}  
+          </a>
+          <span class="fs-7 f-gray as-fs">
+            {{ user.email }}  
+          </span>
+          <a href="{% url 'logout' %}" class="f-white fs-7 bg-red bdrs-pill pbt-1 plr-2 as-fs mt-1"> logout </a> 
+        </div>
+        
+      </div>
+
+      <div class="w-100 pl-1 mt-3">
+        <span class="fs-5 bold w-100"> Settings </span>
+        <hr>
+        <li>
+          <a href="{% url 'password_change' %}" class="fs-7">
+            Change Password 
+          </a> 
+        </li>
+      </div>
+    </article>
+</main>
+{% endblock content %} 
