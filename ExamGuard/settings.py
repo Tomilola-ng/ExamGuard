@@ -28,9 +28,9 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','django-insecure-*5yl5+i034=$rbf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.railway.app', '127.0.0.1', 'web-production-0c9b.up.railway.app', 'examguard.com']
+ALLOWED_HOSTS = ['.railway.app', '127.0.0.1', 'examguard.up.railway.app', 'examguard.com']
 
-CSRF_TRUSTED_ORIGINS = ['https://web-production-0c9b.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://examguard.up.railway.app']
 
 
 # Application definition
