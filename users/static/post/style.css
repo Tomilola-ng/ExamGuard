@@ -103,11 +103,11 @@ input , textarea {
   padding: 5px 2px;
   border: 0;
   background-color: transparent;
-  box-shadow: 0 0 2px; border-radius: 5px;
+  border: 2px solid black; border-radius: 5px;
 }
 
 input:hover {
-  border-bottom: 3px solid var(--col);
+  border-bottom: 2px solid var(--col);
 }
 
 
