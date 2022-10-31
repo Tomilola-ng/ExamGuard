@@ -58,8 +58,8 @@
 
   <main id="app">
     <header class="w-100 bg-col">
-        <section class="container dp-flex ai-c jc-sb p-2 mxw-450 lg_mxw-900 m-auto">
-        <a  class="w-30 fs-5 f-white anim--right-in"> ExamGuard </a>
+        <section class="container dp-flex ai-c jc-sb p-2 lg_mxw-900 m-auto">
+        <a  class="lg_w-30 fs-5 f-white anim--right-in"> ExamGuard </a>
         <div class="lg_w-20 pbt-2"></div>
         <nav 
         class="w-60 h-100 mxw-250 lg_w-50 dp-flex jc-sa ai-c">
@@ -87,7 +87,7 @@
       <div class="w-100 p-2 pl-0 mt-1">
       {% get_tags as tee_tag %}
          {% for t in tee_tag %}
-          <a href="{% url 'post_list_by_tag' t.slug %}" class="fs-7 mr-1 bg-black f-white bdrs p-1">
+          <a href="{% url 'post_list_by_tag' t.slug %}" class="fs-7 mr-1 mb-1 bg-black f-white bdrs p-1">
              #{{ t }} 
             </a> 
        {% endfor %} 
@@ -100,7 +100,7 @@
       </p>
 
       <span class="bold"> Latest Posts !! </span>
-       {% show_latest_posts 3 %} 
+       {% show_latest_posts 4 %} 
 
       <span class="bold"> Most answered Question !! </span>
        {% get_most_commented_posts as most_commented_posts %}
