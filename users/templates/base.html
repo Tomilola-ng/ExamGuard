@@ -57,19 +57,19 @@
 <body>
 
   <main id="app">
-    <header class="w-100 bg-col">
-        <section class="container dp-flex ai-c jc-sb p-2 lg_mxw-900 m-auto">
-        <a  class="lg_w-30 fs-5 f-white anim--right-in"> ExamGuard </a>
+    <header class="w-100">
+        <section class="container dp-flex ai-c jc-sb pbt-2 plr-1 lg_mxw-900 m-auto">
+        <a  class="lg_w-30 fs-5 f-col anim--right-in"> ExamGuard </a>
         <div class="lg_w-20 pbt-2"></div>
         <nav 
         class="w-60 h-100 mxw-250 lg_w-50 dp-flex jc-sa ai-c">
-            <a href="{% url 'post_list' %}" class="fs-7 f-white"> Posts </a>
-            <a href="{% url 'question_list' %}" class="fs-7 f-white">Ask ?</a>
-            <div class="fs-7 p-2 pbt-1 bg-white bdrs-pill">
+            <a href="{% url 'post_list' %}" class="fs-7 f-col"> Posts </a>
+            <a href="{% url 'question_list' %}" class="fs-7 f-col">Ask ?</a>
+            <div class="fs-7 p-2 pbt-1 bg-col bdrs-pill">
               {% if user.is_authenticated %}
-              <a href="{% url 'dashboard' %}" class="f-col w-100 h-100"> Profile </a>
+              <a href="{% url 'dashboard' %}" class="f-white w-100 h-100"> Profile </a>
               {% else %}
-              <a href="{% url 'register' %}" class="f-col"> Signup </a>
+              <a href="{% url 'register' %}" class="f-white"> Signup </a>
               {% endif %}
             </div>
         </nav>
@@ -81,13 +81,13 @@
       
       <aside id="side bar" 
       class="container mxw-400 m-auto mt-3 p-2 pbt-3">
-      <span class="bold">
+      <span class="bold f-col">
         Search for topics with tags 
       </span>
       <div class="w-100 p-2 pl-0 mt-1">
       {% get_tags as tee_tag %}
          {% for t in tee_tag %}
-          <a href="{% url 'post_list_by_tag' t.slug %}" class="fs-7 mr-1 mb-1 bg-black f-white bdrs p-1">
+          <a href="{% url 'post_list_by_tag' t.slug %}" class="fs-7 mr-1 mb-2 bg-black f-white bdrs p-1">
              #{{ t }} 
             </a> 
        {% endfor %} 
@@ -99,14 +99,14 @@
         Check them out noww, for your own good
       </p>
 
-      <span class="bold"> Latest Posts !! </span>
+      <span class="bold f-col"> Latest Posts !! </span>
        {% show_latest_posts 4 %} 
 
-      <span class="bold"> Most answered Question !! </span>
+      <span class="bold f-col"> Most answered Question !! </span>
        {% get_most_commented_posts as most_commented_posts %}
         <div class="col container bdrs mbt-2">
         {% for post in most_commented_posts %}
-          <a href="{{ post.get_absolute_url }}" class="fs-7 as-fs mb-1"> _{{ post.question| safe |truncatewords:15 }} <span class="bg-col bdrs-pill f-white plr-2 ml-2"> Read_Now </span></a>
+          <a href="{{ post.get_absolute_url }}" class="fs-7 as-fs mb-2"> _{{ post.question| safe |truncatewords:15 }} <span class="bg-col bdrs-pill f-white plr-2 ml-2"> Read_Now </span></a>
       {% endfor %} 
       </aside>
     </article>
