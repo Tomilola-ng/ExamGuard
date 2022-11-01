@@ -59,7 +59,7 @@
   <main id="app">
     <header class="w-100">
         <section class="container dp-flex ai-c jc-sb pbt-2 plr-1 lg_mxw-900 m-auto">
-        <a  class="lg_w-30 fs-5 f-col anim--right-in"> ExamGuard </a>
+        <a  class="lg_w-30 fs-5 f-col bold ml-2 lg_ml-0 anim--right-in"> ExamGuard </a>
         <div class="lg_w-20 pbt-2"></div>
         <nav 
         class="w-60 h-100 mxw-250 lg_w-50 dp-flex jc-sa ai-c">
@@ -84,10 +84,10 @@
       <span class="bold f-col">
         Search for topics with tags 
       </span>
-      <div class="w-100 p-2 pl-0 mt-1">
+      <div class="w-100 pr-2 pl-0 mt-1">
       {% get_tags as tee_tag %}
          {% for t in tee_tag %}
-          <a href="{% url 'post_list_by_tag' t.slug %}" class="fs-7 mr-1 mb-2 bg-black f-white bdrs p-1">
+          <a href="{% url 'post_list_by_tag' t.slug %}" class="fs-7 mr-1 mb-3 bg-black f-white bdrs-pill plr-1">
              #{{ t }} 
             </a> 
        {% endfor %} 
