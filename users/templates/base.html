@@ -60,7 +60,7 @@
   <main id="app">
     <header class="w-100">
         <section class="container dp-flex ai-c jc-sb pbt-2 plr-1 lg_mxw-900 m-auto">
-        <a  class="lg_w-30 fs-5 f-col bold pl-2 anim--right-in"> ExamGuard </a>
+        <a href='{% url 'home' %}'  class="lg_w-30 fs-5 f-col bold lg_ml-4 ml-3 anim--right-in"> ExamGuard </a>
         <div class="lg_w-20 pbt-2"></div>
         <nav 
         class="w-60 h-100 mxw-250 lg_w-50 dp-flex jc-sa ai-c">
@@ -98,7 +98,7 @@
       <div class="w-100 pr-2 pl-0 mt-1">
       {% get_tags as tee_tag %}
          {% for t in tee_tag %}
-          <a href="{% url 'post_list_by_tag' t.slug %}" class="fs-7 mr-1 mb-3 bg-black f-white bdrs-pill plr-2 pbt-1">
+          <a href="{% url 'post_list_by_tag' t.slug %}" class="fs-7 mr-1 mb-3 bg-black f-white bdrs-pill plr-1">
              #{{ t }} 
             </a> 
        {% endfor %} 
@@ -110,12 +110,12 @@
         Check them out noww, for your own good
       </p>
 
-      <span class="bold"> Latest Posts !! </span>
+      <span class="bold f-col"> Latest Posts !! </span>
        {% show_latest_posts 4 %} 
 
-          <span class="bold"> Most answered Question !! </span>
+      <span class="bold f-col"> Most answered Question !! </span>
        {% get_most_commented_posts as most_commented_posts %}
-        <div class="col container bdrs mbt-3">
+        <div class="col container bdrs mbt-2">
         {% for post in most_commented_posts %}
           <a href="{{ post.get_absolute_url }}" class="fs-7 as-fs mb-2"> _{{ post.question| safe |truncatewords:15 }} <span class="bg-col bdrs-pill f-white plr-2 ml-2"> Read_Now </span></a>
       {% endfor %} 
