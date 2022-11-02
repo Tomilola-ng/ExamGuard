@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path , include
 from users.views import register as registerView
 from django.views.generic import RedirectView
+from posts.views import home 
 
 
 
@@ -27,9 +28,10 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('question/', include('questions.urls')),
     path('posts/', include('posts.urls')),
+    path('home/', home, name='home'),
 
 
 
     #  add ons
-    path('', RedirectView.as_view(url='posts/'))
+    path('', RedirectView.as_view(url='home/'))
 ]
