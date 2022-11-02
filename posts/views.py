@@ -51,3 +51,10 @@ def PostDetailView(request, id):
 
     return render(request, 'posts/post_detail.html', context )
 
+def home(request):
+    posts = Post.objects.annotate(total_comments=Count('viewcount')).order_by('-total_comments')[:4]
+    
+    context = {
+        'objects': posts,
+    }
+    return render(request, 'posts/home.html', context)
